@@ -15,6 +15,8 @@ require_once(dirname(__FILE__).'/bbb_api/bbb_api.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
+require_login();
+
 $salt = trim($CFG->BigBlueButtonBNSecuritySalt);
 $url = trim(trim($CFG->BigBlueButtonBNServerURL),'/').'/';
 
@@ -51,7 +53,7 @@ if ( isset($_GET['name']) && $_GET['name'] != '' ){
                         $publishURL = BigBlueButtonBN::setPublishRecordingsURL($recording['recordID'], 'true', $url, $salt);
                         $actionbar = "<a id='actionbar-publish-a-".$recording['recordID']."' title='".$view_recording_list_actionbar_show."' href='#'><img id='actionbar-publish-img-".$recording['recordID']."' src='pix/show.gif' class='iconsmall' onClick='actionCall(\\\"".$publishURL."\\\", \\\"publish\\\", \\\"".$recording['recordID']."\\\")'   /></a>";
                     }
-                    $actionbar .= "<a id='actionbar-delete-a-".$recording['recordID']."' title='".$view_recording_list_actionbar_delete."' href='#'><img id='actionbar-delete-img-".$recording['recordID']."' src='pix/delete.gif' class='iconsmall' alt='Delete' onClick='actionCall(\\\"".$deleteURL."\\\", \\\"delete\\\", \\\"".$recording['recordID']."\\\")'   /></a>";
+                    $actionbar .= "<a id='actionbar-delete-a-".$recording['recordID']."' title='".$view_recording_list_actionbar_delete."' href='#'><img id='actionbar-delete-img-".$recording['recordID']."' src='pix/delete.gif' class='iconsmall' onClick='actionCall(\\\"".$deleteURL."\\\", \\\"delete\\\", \\\"".$recording['recordID']."\\\")'   /></a>";
                           }
                 
                 $type = '';

@@ -14,41 +14,40 @@ function actionCall(url, action, recordingID) {
 	action = (typeof action == 'undefined') ? 'publish' : action;
 
 	if (action == 'publish' || (action == 'delete' && confirm("Are you sure to delete this recording?"))) {
-		if (window.XMLHttpRequest) {
-			req = new XMLHttpRequest();
-		} else if (window.ActiveXObject) {
-
-			try {
-				req = new ActiveXObject("Msxml2.XMLHTTP");
-			} catch (e) {
-
-				try {
-					req = new ActiveXObject("Microsoft.XMLHTTP");
-				} catch (e) {
-				}
-			}
-		}
-
-		var req = new XMLHttpRequest();
 		if (action == 'publish') {
-			var el_img = document.getElementById('actionbar-publish-img-'
-					+ recordingID);
-			var el_a = document.getElementById('actionbar-publish-img-'
-					+ recordingID);
-			if (el_img) {
-				if (el_img.alt == 'Hide') {
-					el_img.alt = 'Show';
+			//console.log($('#actionbar-publish-img-'+ recordingID).get());
+			console.log($('#actionbar-publish-a-'+ recordingID).get());
+			
+			
+			//$('#actionbar-publish-img-'+ recordingID){
+			//	console.log('Hello');
+			//	console.log($(this).val());
+			//};
+
+			//$('#actionbar-publish-img-'+ recordingID).attr({
+			//	alt: 'Show',
+			//	src: 'pix/show.gif',
+			//});
+			//$('#actionbar-publish-a-'+ recordingID).attr({
+			//	title: 'Show'
+			//});
+			
+			
+			var el_a = document.getElementById('actionbar-publish-a-'+ recordingID);
+			if (el_a) {
+				var el_img = document.getElementById('actionbar-publish-img-'+ recordingID);
+				if (el_a.title == view_recording_list_actionbar_hide ) {
+					el_a.title = view_recording_list_actionbar_show;
 					el_img.src = 'pix/show.gif';
-					el_a.title = 'Show';
 
 				} else {
-					el_img.alt = 'Hide';
+					el_a.title = view_recording_list_actionbar_hide;
 					el_img.src = 'pix/hide.gif';
-					el_a.title = 'Hide';
 
 				}
 
 			}
+			
 		} else {
 			// Deletes the line in the dataTable
 			var row = $(document.getElementById('actionbar-publish-img-'+ recordingID)).closest("tr").get(0);
@@ -56,11 +55,14 @@ function actionCall(url, action, recordingID) {
 
 		}
 
-		req.open("GET", url, true);
-		req.onreadystatechange = function() {
-		}
-
-		req.send(null);
+		$.ajax({
+		    url      : url,
+		    dataType : 'xml',
+		    crossDomain: true,
+		    success  : function(data) { },
+		    error  : function(data) { }
+		});
+		
 	}
 }
 

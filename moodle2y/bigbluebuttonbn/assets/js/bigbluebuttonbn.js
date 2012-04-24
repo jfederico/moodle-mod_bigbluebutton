@@ -39,7 +39,7 @@ function actionCall(action, recordingID) {
 		}
 		
 		$.ajax({
-		    url	: M.cfg.wwwroot + '/mod/bigbluebuttonbn/bbb-broker.php?action=' + action + '&recordingID=' + recordingID,
+		    url	: M.cfg.wwwroot + '/mod/bigbluebuttonbn/broker.php?action=' + action + '&recordingID=' + recordingID,
 		    dataType : 'xml'
 		});
 		
@@ -89,7 +89,7 @@ $(document).ready(function(){
             bigbluebuttonbn_joinURL();
         } else {
             $.jheartbeat.set({
-                url: M.cfg.wwwroot + "/mod/bigbluebuttonbn/test.php?name=" + meetingid,
+                url: M.cfg.wwwroot + "/mod/bigbluebuttonbn/broker.php?action=ping&name=" + meetingid,
                 delay: 5000
                 }, function() {
                     bigbluebuttonbn_callback();

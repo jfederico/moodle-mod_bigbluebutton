@@ -10,14 +10,15 @@
  * @copyright 2010-2012 Blindside Networks 
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v2 or later
  */
-
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
-$name = $_GET['name'];
+require_login();
 
 $salt = trim($CFG->BigBlueButtonBNSecuritySalt);
 $url = trim(trim($CFG->BigBlueButtonBNServerURL),'/').'/';
 
+$name = $_GET['name'];
+
 echo BigBlueButtonBN::getMeetingXML( $name, $url, $salt );
-?>
+??>

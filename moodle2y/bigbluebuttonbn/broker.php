@@ -1,5 +1,4 @@
-<?php //Buld the <head>
-
+<?php
 /**
  * View and administrate BigBlueButton playback recordings
  *
@@ -11,17 +10,15 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v2 or later
  */
 
-require_once(dirname(__FILE__).'/bbb_api/bbb_api.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
 require_login();
 
-$action = optional_param('action', 0, PARAM_TEXT); 
-if(!$action) $action="version";
-
 $salt = trim($CFG->BigBlueButtonBNSecuritySalt);
 $url = trim(trim($CFG->BigBlueButtonBNServerURL),'/').'/';
+
+if( !($action = optional_param('action', 0, PARAM_TEXT)) ) $action="version";
 
 switch ($action) {
     case "publish":
@@ -60,6 +57,15 @@ switch ($action) {
             echo 'No recordingID';
         }	
         break;
+
+    case "ping":
+        if( $meetingID = optional_param('meetingID', 0, PARAM_TEXT) ){
+            echo BigBlueButtonBN::getMeetingXML( $meetingID, $url, $salt );
+        } else {
+            echo 'false'';
+        }
+        break;
+        
     default:
         echo BigBlueButtonBN::getServerVersion($url);
 }

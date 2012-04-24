@@ -17,35 +17,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 Versions:
-   1.0  --  Initial version written by DJP
-                   (email: djp [a t ]  architectes DOT .org)
-   1.1  --  Updated by Omar Shammas and Sebastian Schneider
-                    (email : omar [at] b l i n ds i de n  e t w o r ks [dt] com)
-                    (email : seb DOT sschneider [ a t ] g m ail DOT com)
-   1.2  --  Updated by Omar Shammas
-                    (email : omar [at] b l i n ds i de n  e t w o r ks [dt] com)
-   1.3  --  Reviewed and extended by Jesus Federico
-                    (email : jesus [at] b l i n ds i de n  e t w o r ks [dt] com)
-   0.8_1.4.10  --  Extended by Jesus Federico to support BigBlueButton 0.8 version
-                    (email : jesus [at] b l i n ds i de n  e t w o r ks [dt] com)
+   1.8.1    --  Full support for BigBlueButton 0.8, by Jesus Federico
+
+Legacy Versions:
+   bbb_api 1.0      --  Initial version written by DJP
+   bbb_api 1.1      --  Updated by Omar Shammas and Sebastian Schneider
+   bbb_api 1.2      --  Updated by Omar Shammas
+   bbb_api 1.3      --  Updated by Jesus Federico
+   bbb_api 1.4.10   --  Updated by Jesus Federico to support BigBlueButton 0.8 version
 */
 
-
-/*
-@param
-$userName = userName AND meetingID (string) 
-$welcomeString = welcome message (string)
-
-$modPW = moderator password (string)
-$vPW = viewer password (string)
-$voiceBridge = voice bridge (integer)
-$logout = logout url (url)
-*/
-// create a meeting and return the url to join as moderator
-
-
-// TODO::
-// create some set methods 
 class BigBlueButtonBN {
 	
 	var $userName = array();
